@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <title>Your Tasks</title>
+    <link rel="stylesheet" href="meowstyle.css">
+</head>
+</head>
+<body>
+    <header>
+         <h1>TaskMeownager:3</h1>
+        <nav>
+            <ul>
+                <li><a href="home-page.html">Home</a></li>
+                <li><a href="tasks-page.html">Tasks</a></li>
+                <li><a href="Stats-page.html">Stats!</a></li>
+                <li><a href="Pet-page.html">Pet</a></li>
+                <!-- add another feature where you have a virtual pet and 
+                 with every task you complete and how well you complete it 
+                 your virtual pet(which is a cat) will grow and thrive(simmilar mechanism to a tomogachi)-->
+                 
+            </ul>
+        </nav>
+    </header>
+
+    <h2>Your Tasks!</h2>
+    <button onclick="document.getElementById('demo').style.display='block'">Add Task</button>
+
+    <form id = "demo" style ="display:none;" action="tasks-page.html">
+        <h2>Add Task!</h2>
+			<h4>Task Name:</h4>
+			<input type="text" name="taskname" maxlenght="30" required>
+			<br>
+			<h4>Description:</h4>
+			<textarea name="desc" maxlength="100" rows="5" cols="30"></textarea>
+			<br>
+			<h4>When do you plan to finish this task?</h4>
+			<input type="date" name="expecteddate" required>
+			<br>
+			<br>
+			<input type="submit" value="Add Task"> 
+    </form>
+    
+
+
+</body>
+</html>
