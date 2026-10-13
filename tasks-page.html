@@ -22,7 +22,7 @@
         </nav>
     </header>
 
-    <h2>Your Tasks!</h2>
+
     <button onclick="document.getElementById('demo').style.display='block'">Add Task</button>
 
     <form id = "demo" style ="display:none;" action="tasks-page.html">
@@ -39,6 +39,37 @@
 			<br>
 			<input type="submit" value="Add Task"> 
     </form>
+    <h3>Your tasks</h3>
+    <p id="data">
+        
+    </p>
+    <script>
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit',(e) => {
+            e.preventDefault();
+            document.getElementById('demo').style.display = 'none';
+            const fd = new FormData(form);
+            const obj = Object.fromEntries(fd);
+            const json = JSON.stringify(obj);
+            localStorage.setItem('form',json);
+        })
+        const loc = localStorage.getItem('form');
+        const val = JSON.parse(loc);
+        for (key in val){
+            const markup = `
+            <div>
+                <span>${val[key]}</span>
+                </div>
+            `;
+            document.getElementById('data').innerHTML += markup;
+
+        }
+        
+        
+         
+       
+    </script>
     
 
 
