@@ -44,27 +44,55 @@
         
     </p>
     <script>
-        const form = document.querySelector('form');
-
-        form.addEventListener('submit',(e) => {
+       const tasks = {
+        taskname: [],
+        description: [],
+        exdate: []
+  
+       } 
+       const form = document.querySelector('form');
+       form.addEventListener('submit',(e) =>{
             e.preventDefault();
-            document.getElementById('demo').style.display = 'none';
-            const fd = new FormData(form);
-            const obj = Object.fromEntries(fd);
+            document.getElementById('demo').style.display='none';
+            const formd = new FormData(form);
+            const obj = Object.fromEntries(formd);<!--fix issue somewhere around here cuz "obj" might not be defined-->
+            
             const json = JSON.stringify(obj);
             localStorage.setItem('form',json);
-        })
-        const loc = localStorage.getItem('form');
-        const val = JSON.parse(loc);
-        for (key in val){
-            const markup = `
-            <div>
-                <span>${val[key]}</span>
-                </div>
-            `;
-            document.getElementById('data').innerHTML += markup;
+            
+            
+            tasks.taskname.push(obj[0]); <!-- i shoud try parrallel arrays instead of an array of objects mayble thatll work-->
+            tasks.description.push(obj[1]);
+            tasks.exdate.push(obj[2]);
+            const names = tasks.taskname[0];
+            const desc = tasks.description[0];
+            const dates = tasks.exdate[0];
+            document.getElementById('data').innerHTML= names ;
+            
+            
+            
+        
+        
+            
+       })
+       
+       /**
+        let table = "";
+        for(let i in tasks){
+            table += "<h3>" + tasks.taskname[i] + tasks.description[i] +tasks.exdate[i] + "</h3>";
 
         }
+        document.getElementById('data').innerHTML = table;
+        
+        const json = localStorage.getItem('form');
+        const obj = JSON.parse(json);
+        for(key in obj){
+            const mark = `
+            <p>${obj[key]}</p>
+            `;
+            document.getElementById('data').innerHTML += mark;
+        }
+        */
         
         
          
